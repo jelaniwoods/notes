@@ -1,1 +1,3 @@
 # notes
+
+Various programming notes

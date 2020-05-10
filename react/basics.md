@@ -65,3 +65,21 @@ So you can style things like:
     )
 	//...
 ```
+
+###### You can't add `className` on JSX elements (the ones that _look_ like HTML). You can't add it to a Component
+
+
+## Interpolate JS in JSX
+
+Just add the `{ }`
+
+```jsx
+function App() {
+  const firstName = "Jelani"
+  const lastName = "Woods"
+  
+  return (
+    <h1>Hello {firstName + " " + lastName}!</h1>
+  )
+}
+```

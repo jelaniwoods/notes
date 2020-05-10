@@ -24,17 +24,17 @@ import ReactDOM from "react-dom"
 
 function MyApp) {
   return(
-		<ul>
-			<li>1</li>
-			<li>2</li>
-			<li>3</li>
-		</ul>
-	)
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  )
 }
 
 ReactDOM.render(
-	<MyApp />,
-	document.getElementById("root")
+  <MyApp />,
+  document.getElementById("root")
 )
 ```
 
@@ -59,11 +59,11 @@ document.getElementById("root").className
 So you can style things like:
 
 ```jsx
-	//...
-    return (
-        <header className="navbar">This is the header</header>
-    )
-	//...
+//...
+return (
+  <header className="navbar">This is the header</header>
+)
+//...
 ```
 
 ###### You can't add `className` on JSX elements (the ones that _look_ like HTML). You can't add it to a Component
@@ -90,4 +90,37 @@ Or in ES6
   return (
     <h1>Hello {`${firstName} ${lastName}`}!</h1>
   )
+```
+
+## Props
+
+Conceptually similar to attribute/value pairs of an HTML element.
+
+You give an `<img>` element a `src=""` to some value. That value can change and will dramatically differentiate one `<img>` from another.
+
+Relating more to components, `props` are arguments to a component.
+
+```jsx
+<ContactCard 
+  name="Mr. Whiskerson" 
+  imgUrl="http://placekitten.com/300/200" 
+  phone="(212) 555-1234" 
+  email="mr.whiskaz@catnap.meow"
+/>
+```
+
+Use the `props` in the Component.
+
+```jsx
+function ContactCard(props) {
+    console.log(props)
+    return (
+      <div className="contact-card">
+        <img src={props.imgUrl}/>
+        <h3>{props.name}</h3>
+        <p>Phone: {props.phone}</p>
+        <p>Email: {props.email}</p>
+      </div>
+    )
+}
 ```

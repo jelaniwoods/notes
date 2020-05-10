@@ -83,3 +83,11 @@ function App() {
   )
 }
 ```
+
+Or in ES6
+
+```jsx
+  return (
+    <h1>Hello {`${firstName} ${lastName}`}!</h1>
+  )
+```

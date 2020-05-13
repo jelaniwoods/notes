@@ -124,3 +124,41 @@ function ContactCard(props) {
     )
 }
 ```
+
+## State
+
+— is data that Component maintains
+
+`props` are immutable. Components recieve them, but they cannot change them.
+
+State _can_ be changed.
+
+1. Component must be Class based.
+1. Add Constructor and call `super()`
+1. Initialize `state`.
+
+```jsx
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+    answer: "Yes" // initial value
+    }
+  }
+  ...
+```
+
+Can pass state from Parent to Child Component through props.
+
+```jsx
+render() {
+  return (
+    <div>
+      <h1>Is state important to know? {this.state.answer}</h1>
+      <ChildComponent answer={this.state.answer}/>
+    </div>
+  )
+}
+```
+
+Changing the state with `setState()` will _automatically, update Child Components that received the state.

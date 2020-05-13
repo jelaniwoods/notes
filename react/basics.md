@@ -162,3 +162,20 @@ render() {
 ```
 
 Changing the state with `setState()` will _automatically, update Child Components that received the state.
+
+## Event handling
+
+Pretty much like regular JS. Camel-cased event HTML [triggers](https://reactjs.org/docs/events.html#supported-events), except you can write the function right there.
+
+```jsx
+function App() {
+  return (
+    <div>
+      <img src="https://www.fillmurray.com/200/100"/>
+      <br />
+      <br />
+      <button onClick={() => console.log("I was clicked!")}>Click me</button>
+    </div>
+ )
+}
+```

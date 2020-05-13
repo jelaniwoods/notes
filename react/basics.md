@@ -142,7 +142,7 @@ class App extends React.Component {
   constructor() {
     super()
     this.state = {
-    answer: "Yes" // initial value
+      answer: "Yes" // initial value
     }
   }
   ...

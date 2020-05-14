@@ -179,3 +179,58 @@ function App() {
  )
 }
 ```
+
+## setState
+
+You can't modify `state` directly and probably don't want to.
+
+```jsx
+// BAD
+handleClick() {
+  this.state.count++
+}
+```
+Use `setState`
+
+You can pass `setState` an object that represents the new state.
+
+```jsx
+this.setState({count: 1})
+```
+
+You can also pass a function to `setState`. 
+
+```jsx
+this.setState(prevState => {
+  // ...
+})
+```
+
+The function must return an Object that represents the new `state`.
+
+```jsx
+this.setState(prevState => {
+  return {
+    count: prevState.count + 1
+  }
+})
+```
+
+This way you have a guarenteed way to accesss the previous state (`this.state` is not guaranteed to be accurate).
+
+> TypeError: Cannot read property 'setState' of undefined
+
+Annoyingly, if you're using a function to call `setState` you first need to bind `this` to the current class.
+
+```jsx
+constructor() {
+  super()
+  this.state = {
+    count: 0
+  }
+  this.handleClick = this.handleClick.bind(this)
+}
+// ...
+// in render()
+<button onClick={this.handleClick}>Change!</button>
+```

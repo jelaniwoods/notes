@@ -234,3 +234,36 @@ constructor() {
 // in render()
 <button onClick={this.handleClick}>Change!</button>
 ```
+
+## Lifecycle Methods
+
+`render()` - not usually labelled as such. How the Component is displayed to the world. Can be called anytime the `state` or `props` change.
+
+`componentDidMount()` - The very first time the Component shows up, React runs this method. Will only run **once**. Re-renders will _not_ trigger this. Usually used for API call.
+
+`componentWillReceiveProps()` - DEPRECATED: Run everytime Component receives `props`. Also run when Parent Component sends `props` to Child Component.
+
+```jsx
+componentWillReceiveProps(nextProps) {
+  if (nextProps.whatever !== this.props.whatever) {
+    // do something important here
+  }
+}
+```
+
+`shouldComponentUpdate(nextProps, nextState)` - return `true`/`false` if you want Component to re-render.
+
+`componentWillUnmount()` - Used to teardown or clean up code before Component disappears.
+
+```jsx
+static getDerivedStateFromProps(props, state) {
+  // return the new, updated state based upon the props
+  // https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html
+}
+
+getSnapshotBeforeUpdate() {
+  // create a backup of the current way things are
+  // https://reactjs.org/docs/react-component.html#getsnapshotbeforeupdate
+}
+```
+

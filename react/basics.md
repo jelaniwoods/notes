@@ -161,7 +161,7 @@ render() {
 }
 ```
 
-Changing the state with `setState()` will _automatically, update Child Components that received the state.
+Changing the state with `setState()` will _automatically_, update Child Components that received the state.
 
 ## Event handling
 

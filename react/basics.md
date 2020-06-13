@@ -288,3 +288,65 @@ componentDidUpdate(prevProps, prevState) {
     }
 }
 ```
+
+## Conditional Rendering
+
+### Ternary
+
+Of course, there are a LOT of different ways to do conditionals. Ternary operators, however, are pretty commonly used in React.
+
+expression ? when true do this : otherwise do this
+
+
+```jsx
+render() {
+    return (
+        <div>
+            {this.state.isLoading ?
+            <h1>Loading...</h1> :
+            <Conditional />}
+        </div>
+    )
+}
+```
+
+### Logical AND Operator
+
+Usually, we think of `&&` when writing some conditional and you only want the condition to be `true` if both expressions are `true`.
+
+How JavaScript works under the hood in regards to `&&`:
+- the first expression on the left will be evaluated
+- if the first expression is _not_ true the whole condition is `false`
+- if the first expression **is** `true`, the second expression is **immediately** returned
+
+This allows us to do some cleverness with conditional Component rendering.
+
+
+Say we have a list of unread messages in `state` and we only want to display them if the list has messages.
+
+Using a Ternary we could have something like
+
+```jsx
+{
+    this.state.unreadMessages.length > 0 ? 
+    <h2>You have {this.state.unreadMessages.length} unread messages!</h2> :
+    null
+}
+```
+
+But using the logical AND, we can do
+
+```jsx
+render() {
+    return (
+        <div>
+            {
+                this.state.unreadMessages.length > 0 && 
+                <h2>You have {this.state.unreadMessages.length} unread messages!</h2>
+            }
+        </div>
+    )
+}
+```
+
+Since if `this.state.unreadMessages.length > 0` is `true`, then `<h2>You have {this.state.unreadMessages.length} unread messages!</h2>` will immediately be returned.

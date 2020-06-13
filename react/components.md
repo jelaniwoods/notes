@@ -2,7 +2,7 @@
 
 ## Mapping Components
 
-A Component can render an Array of components.
+A Component can render an Array of other Components.
 
 ```jsx
 // jokesData is an Array of Hashes

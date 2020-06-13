@@ -237,23 +237,23 @@ constructor() {
 
 ## Lifecycle Methods
 
-`render()` - not usually labelled as such. How the Component is displayed to the world. Can be called anytime the `state` or `props` change.
+- `render()` - not usually labelled as such. How the Component is displayed to the world. Can be called anytime the `state` or `props` change.
 
-`componentDidMount()` - The very first time the Component shows up, React runs this method. Will only run **once**. Re-renders will _not_ trigger this. Usually used for API call.
+- `componentDidMount()` - The very first time the Component shows up, React runs this method. Will only run **once**. Re-renders will _not_ trigger this. Usually used for API call.
 
-`componentWillReceiveProps()` - DEPRECATED: Run everytime Component receives `props`. Also run when Parent Component sends `props` to Child Component.
+- `componentWillReceiveProps()` - DEPRECATED: Run everytime Component receives `props`. Also run when Parent Component sends `props` to Child Component.
 
-```jsx
-componentWillReceiveProps(nextProps) {
-  if (nextProps.whatever !== this.props.whatever) {
-    // do something important here
+  ```jsx
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.whatever !== this.props.whatever) {
+      // do something important here
+    }
   }
-}
-```
+  ```
 
-`shouldComponentUpdate(nextProps, nextState)` - return `true`/`false` if you want Component to re-render.
+- `shouldComponentUpdate(nextProps, nextState)` - return `true`/`false` if you want Component to re-render.
 
-`componentWillUnmount()` - Used to teardown or clean up code before Component disappears.
+- `componentWillUnmount()` - Used to teardown or clean up code before Component disappears.
 
 ```jsx
 static getDerivedStateFromProps(props, state) {
@@ -267,3 +267,24 @@ getSnapshotBeforeUpdate() {
 }
 ```
 
+- `componentDidUpdate()` - 
+
+```jsx
+componentDidUpdate() {
+  const newColor = randomcolor()
+  this.setState({color: newColor})
+}
+
+// Uncaught Invariant Violation: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+```
+
+Since the `render` is called anytime the `state` is changed and `componentDidUpdate` is called after `render`, changing the `state` will trigger a new `render` which triggers a new `componentDidUpdate` which updates the `state` which triggers the `render`... infinitely. **Must only update `state` based on condition**.
+
+```jsx
+componentDidUpdate(prevProps, prevState) {
+    if(prevState.count !== this.state.count) {
+        const newColor = randomcolor()
+        this.setState({color: newColor})
+    }
+}
+```

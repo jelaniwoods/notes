@@ -374,3 +374,41 @@ function TodoItem(props) {
 }
 ```
 
+### fetch
+
+A Global vanilla JS function that makes HTTP calls.
+[Docs](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch)
+
+### Promises
+
+[Article](https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261)
+
+## Reading from APIs
+
+Often done in `componentDidMount()`,
+
+```jsx
+componentDidMount() {
+    fetch("https://swapi.co/api/people/1")
+        .then(response => response.json())
+        .then(data => console.log(data))
+}
+```
+
+and of course we store the `data` in `state` somewhere.
+
+_Usually_, it's good practice to display some loading indicater if you're reading from an API
+
+```jsx
+componentDidMount() {
+    this.setState({loading: true})
+    fetch("https://swapi.co/api/people/1")
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                loading: false,
+                character: data
+            })
+        })
+}
+```

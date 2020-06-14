@@ -350,3 +350,26 @@ render() {
 ```
 
 Since if `this.state.unreadMessages.length > 0` is `true`, then `<h2>You have {this.state.unreadMessages.length} unread messages!</h2>` will immediately be returned.
+
+Can also do conditional styling
+
+```jsx
+function TodoItem(props) {
+    const completedStyle = {
+        fontStyle: "italic",
+        color: "#cdcdcd",
+        textDecoration: "line-through"
+    }
+    
+    return (
+        <div className="todo-item">
+            <input 
+                type="checkbox" 
+                checked={props.item.completed} 
+                onChange={() => props.handleChange(props.item.id)}
+            />
+            <p style={props.item.completed ? completedStyle: null}>{props.item.text}</p>
+        </div>
+    )
+}
+```

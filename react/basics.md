@@ -474,3 +474,62 @@ class App extends Component {
 export default App
 
 ```
+
+### Different types of inputs
+
+#### <textarea>
+
+In React a `<textarea />` is more similar to an `<input>`, it's a self-closing tag. We can use the `value` property
+
+#### Checkbox
+
+```jsx
+handleChange(event) {
+    const {name, value, type, checked} = event.target
+    type === "checkbox" ? this.setState({ [name]: checked }) : this.setState({ [name]: value })
+}
+
+<label>
+    <input 
+        type="checkbox" 
+        name="isFriendly"
+        checked={this.state.isFriendly}
+        onChange={this.handleChange}
+    /> Is friendly?
+</label>
+```
+
+#### Radios
+
+```jsx
+<label>
+    <input 
+        type="radio" 
+        name="gender"
+        value="female"
+        checked={this.state.gender === "female"}
+        onChange={this.handleChange}
+    /> Female
+</label>
+```
+
+
+#### Select
+
+```jsx
+<label>Favorite Color:</label>
+<select 
+    value={this.state.favColor}
+    onChange={this.handleChange}
+    name="favColor"
+>
+    <option value="blue">Blue</option>
+    <option value="green">Green</option>
+    <option value="red">Red</option>
+    <option value="orange">Orange</option>
+    <option value="yellow">Yellow</option>
+</select>
+```
+
+We can write a single `handleChange` for every type of input in our forms.
+

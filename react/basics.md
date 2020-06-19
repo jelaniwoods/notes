@@ -533,3 +533,49 @@ handleChange(event) {
 
 We can write a single `handleChange` for every type of input in our forms.
 
+#### Container and Presentation Components
+
+Nicer separation of concerns!
+
+Container Component
+
+Job is to maintain state, methods that update state. Delegate presentation logic to other component.
+
+Presentation Component
+
+Job is to recieve props and displaying things correctly
+
+[article](// https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+
+Example,
+
+Container Component delegates the state data to Presentation Component
+
+```jsx
+// Container
+render() {
+    <FormComponent
+        handleChange={this.handleChange}
+        data={this.state}
+    />
+}
+
+// Presentation
+
+<input 
+  name="firstName" 
+  value={props.data.firstName}
+  ...
+```
+
+
+Or with Object spread
+
+```jsx
+render() {
+    <FormComponent
+        handleChange={this.handleChange}
+        {...this.state}
+    />
+}
+```

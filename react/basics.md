@@ -477,11 +477,11 @@ export default App
 
 ### Different types of inputs
 
-#### <textarea>
+#### textarea
 
 In React a `<textarea />` is more similar to an `<input>`, it's a self-closing tag. We can use the `value` property
 
-#### Checkbox
+#### checkbox
 
 ```jsx
 handleChange(event) {
@@ -499,7 +499,7 @@ handleChange(event) {
 </label>
 ```
 
-#### Radios
+#### radio
 
 ```jsx
 <label>
@@ -514,7 +514,7 @@ handleChange(event) {
 ```
 
 
-#### Select
+#### select
 
 ```jsx
 <label>Favorite Color:</label>
@@ -533,7 +533,7 @@ handleChange(event) {
 
 We can write a single `handleChange` for every type of input in our forms.
 
-#### Container and Presentation Components
+### Container and Presentation Components
 
 Nicer separation of concerns!
 
@@ -545,7 +545,7 @@ Presentation Component
 
 Job is to recieve props and displaying things correctly
 
-[article](// https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
+[article](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)
 
 Example,
 

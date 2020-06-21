@@ -22,7 +22,7 @@ Sort of a fusion between View partials and an Object.
 import React from "react"
 import ReactDOM from "react-dom"
 
-function MyApp) {
+function MyApp() {
   return(
     <ul>
       <li>1</li>
@@ -579,3 +579,49 @@ render() {
     />
 }
 ```
+
+### Using Arrow Functions
+
+Using regular function syntax, we need to bind `this`.
+
+```jsx
+class App extends Component {
+    constructor() {
+        super()
+        // ...
+        this.handleChange = this.handleChange.bind(this)
+    }
+    
+    // Change to use arrow functions
+    handleChange(event) {
+        this.setState({
+          // ..
+        })
+    }
+```
+
+But if we use the **Arrow Function** syntax, `this` is taken from the surroundings, which in this context means we don't need to bind it.
+
+```jsx
+class App extends Component {
+    constructor() {
+        // ..
+    }
+    
+    handleChange = (event) => {
+        const { name, value } = event.target
+        this.setState({
+          // ..
+        })
+    }
+```
+
+#### Other modern/advanced React features/topics to learn:
+ 
+ * Official React Context API - https://reactjs.org/docs/context.html
+ * Error Boundaries - https://reactjs.org/docs/error-boundaries.html
+ * render props - https://reactjs.org/docs/render-props.html
+ * Higher Order Components - https://reactjs.org/docs/higher-order-components.html
+ * React Router - https://reacttraining.com/react-router/core/guides/philosophy
+ * React Hooks - https://reactjs.org/docs/hooks-intro.html
+ * React lazy, memo, and Suspense - https://reactjs.org/blog/2018/10/23/react-v-16-6.html

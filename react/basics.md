@@ -592,7 +592,6 @@ class App extends Component {
         this.handleChange = this.handleChange.bind(this)
     }
     
-    // Change to use arrow functions
     handleChange(event) {
         this.setState({
           // ..

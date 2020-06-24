@@ -624,3 +624,64 @@ class App extends Component {
  * React Router - https://reacttraining.com/react-router/core/guides/philosophy
  * React Hooks - https://reactjs.org/docs/hooks-intro.html
  * React lazy, memo, and Suspense - https://reactjs.org/blog/2018/10/23/react-v-16-6.html
+
+
+### Hooks
+
+Hooks are a way to "hook into" state and lifecycle methods of Components **without** using classes.
+
+= Allows us to only use functional Components
+- Improve readability and organization of components
+
+#### useState
+
+```jsx
+import React, { useState } from "react"
+
+function App() {
+    const value = useState()
+    console.log(value)
+    
+    return (
+        <div>
+            <h1>Is state important to know? Yes</h1>
+        </div>
+    )
+}
+```
+
+`useState()` returns `[ null, f()]`
+
+`useState()` returns `[true, f()]`
+
+The argument to `useState` is the initial value of `state`
+
+Why does it return an Array?
+
+  We're expected to do Array destructuring.
+
+##### Object Destructuring
+
+```js
+const person = {
+    name: "Joe",
+    age: 42
+}
+
+const { name, age } = person
+```
+
+##### Array Destructuring
+
+```js
+const [ value ] = [ "No", f()]
+value // => "No"
+```
+
+You can name `value`, whatever you want! (a difference between object destructuring)
+
+Note: When using `useState` we no longer _need_ to initialize state as a full object. It can be a primitive value.
+
+#### Changing state
+
+#### use Effect

@@ -682,6 +682,52 @@ You can name `value`, whatever you want! (a difference between object destructur
 
 Note: When using `useState` we no longer _need_ to initialize state as a full object. It can be a primitive value.
 
+
 #### Changing state
 
+The `f()`returned from `useState` is the function that update the state you just set. Usually the name of this function is `set` + "name of whatever state was set.
+
+```jsx
+const [count, setCount] = useState(0)
+...
+// bad
+<button onClick={() => setCount(prevCount => prevCount + 1)}>Change!</button>
+...
+// better
+function increment() {
+  setCount(prevCount => prevCount + 1)
+}
+...
+<button onClick={increment}>Increment</button>
+```
+
+If your state is going to be a big Hash or Array, you need to provide the _entire_ object when updating state. Hooks don't do the nice thing that `setState` did, of just updating the part of state that changed. You can use object spread and it's not bad.
+
+You can also just make _multiple_ states— wait what does that EVEN mean?
+
+```jsx
+const [count, setCount] = useState(0)
+const [answer, setAnswer] = useState("Yes")
+```
+
 #### use Effect
+
+Hook into a component's lifecycle method.
+
+Replacement for 
+
+- `componentDidMount`
+- `componentDidUpdate`
+- `componentWillUnmount`
+
+Hook that let's produce side effects of our component.
+
+Anything that reaches outside the Component to do something:
+
+- Network request
+- DOM manipulation
+- Even listeners or timeouts and intervals
+
+`useEffect(callback, Array)` - typically update state in callback function. The values in the Array are the state values that `useEffect` will "watch" and trigger the callback to run. If Array is empty, `useEffect` acts like `componentDidMount` and only runs once.
+
+

@@ -664,8 +664,8 @@ Why does it return an Array?
 
 ```js
 const person = {
-    name: "Joe",
-    age: 42
+  name: "Joe",
+  age: 42
 }
 
 const { name, age } = person
